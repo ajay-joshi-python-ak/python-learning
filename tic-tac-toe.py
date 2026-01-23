@@ -1,3 +1,6 @@
+from colorama import Fore, Back, Style, init
+init()
+
 def winner(board):
 
     def all_same(L):
@@ -46,7 +49,15 @@ def board_game(game_board, player = 0, row = 0, col = 0, just_display=False):
         s = "   "+ "  ".join(str(i) for i in range(len(game)))
         print(s)
         for count, row in enumerate(game_board):
-            print(count, row)
+            colored_row = ""
+            for item in row:
+                if item == 0 : 
+                    colored_row += "   " 
+                elif item == 1:
+                    colored_row += Fore.GREEN + ' X ' + Style.RESET_ALL
+                elif item == 2 : 
+                    colored_row += Fore.MAGENTA + ' O ' + Style.RESET_ALL
+            print(count, colored_row)
         print()
         return game_board, True
     except IndexError as e:
