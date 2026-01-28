@@ -24,11 +24,11 @@ class Employee:
             return False
         return True
 
-    def __str__(self):  # for end user
-        return f"( {self.name}, {self.email}, {self. salary})"
+    def __str__(self):  # for end user, less detailed information
+        return f"( {self.name}, {self.email}, {self.salary})"
 
-    def __repr__(self): # for developer
-        return f"Employee( {self.name}, {self.email}, {self. salary})"
+    def __repr__(self): # for developer, more detailed information
+        return f"Employee( {self.name}, {self.email}, {self.salary})"
 
     def __delete__(self):
         print("Instance is deleted!!!")
@@ -46,12 +46,11 @@ class Manager(Employee):
 
     def add_employee(self, emp):
         if emp not in self.employees:
-            employees.append(emp)
+            self.employees.append(emp) 
     
     def remove_employee(self, emp):
         if emp in self.employees:
-            employees.remove(emp)
-
+            self.employees.remove(emp)
     def print_employess(self):
         for emp in self.employees:
             print(emp, end = " ")

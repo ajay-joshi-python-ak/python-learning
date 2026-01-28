@@ -9,8 +9,7 @@ def winner(board):
     for row in board:
         if all_same(row):
             print(f"Winner is player{row[0]} via horizonatlly (---)")
-            return True
-    
+            return True        
     #Vertical check
     for col in range(len(board)):
         check = []
@@ -19,7 +18,7 @@ def winner(board):
         if all_same(check):
             print(f"Winner is player{check[0]} via vertical(|)")
             return True
-    
+
     #leading diagonal check
     diagonal = []
     for i in range(len(board)):
@@ -27,7 +26,7 @@ def winner(board):
     if all_same(diagonal):
         print(f"Winner is player{diagonal[0]} via diagonally(\\)")
         return True
-    
+
     #Counter diagonal check
     diagonal = []
     for i,j in enumerate(reversed(range(len(board)))):
@@ -37,10 +36,10 @@ def winner(board):
         return True
 
 
-    
+
 def board_game(game_board, player = 0, row = 0, col = 0, just_display=False):
     try : 
-        if game_board[row][col] !=0 :
+        if game_board[row][col] != 0 :
             print("Already choosen indexes. Please Try again !!!\n")
             return game, False
 
@@ -51,11 +50,11 @@ def board_game(game_board, player = 0, row = 0, col = 0, just_display=False):
         for count, row in enumerate(game_board):
             colored_row = ""
             for item in row:
-                if item == 0 : 
-                    colored_row += "   " 
+                if item == 0 :
+                    colored_row += "   "
                 elif item == 1:
                     colored_row += Fore.GREEN + ' X ' + Style.RESET_ALL
-                elif item == 2 : 
+                elif item == 2 :
                     colored_row += Fore.MAGENTA + ' O ' + Style.RESET_ALL
             print(count, colored_row)
         print()
@@ -63,7 +62,7 @@ def board_game(game_board, player = 0, row = 0, col = 0, just_display=False):
     except IndexError as e:
         print("Error : Make sure you enter 0,1 or 2 as row/col =>",e)
         return game, False
-    except Exception as e: 
+    except Exception as e:
         print("Error : Something gone very wrong =>", e)
         return game, False
 
@@ -75,14 +74,14 @@ play = True
 while play:
     size = 3
     game = [ [ 0 for i in range(size)] for j in range(size) ]
-    
+
     # print("   0  1  2")
     s = "   "+ "  ".join(str(i) for i in range(len(game)))
     print(s)
     for count, row in enumerate(game):
         print(count, row)
-        
-    game_won = False 
+
+    game_won = False
     player = [1,2]
     current_player = 0
     while not game_won:
@@ -90,15 +89,15 @@ while play:
         print(f"Current player {current_player}")
         played = False
 
-        while not played: 
+        while not played:
             column_choice = int(input("Enter Column number (0,1,2) : "))
             row_choice = int(input("Enter Row number (0,1,2) : "))
             game, played = board_game(game, current_player, row_choice ,column_choice)
-        
+
         if winner(game):
             game_won = True
             again = input("Do you want to play again ? (Y/N)")
-            if(again.lower() == 'y'):
+            if again.lower() == 'y' :
                 print("\nRestarting.......\n")
             elif again.lower() == 'n':
                 print("\nByeeee.......\n")
@@ -106,4 +105,3 @@ while play:
             else :
                 print("\nWrong input terminating ......\n")
                 play = False
-
