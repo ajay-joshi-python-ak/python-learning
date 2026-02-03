@@ -2,3 +2,4 @@
 pandas_module/stack-overflow-developer-survey-2019
 __pycache__
 .env
+example.db
