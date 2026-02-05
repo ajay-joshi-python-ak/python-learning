@@ -32,6 +32,7 @@ class Bike(Vehicle):
         self.bike_type = bike_type
 
     def print_vehicle(self):
+
         print(f"Creating a Bike: {self.brand} {self.bike_type}")
 
 # 3. Factory Method/Class
