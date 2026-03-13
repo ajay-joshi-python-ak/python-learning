@@ -7,4 +7,3 @@ client.connect(('127.0.0.1', 9999))
 
 
 client.send("Hello from client!!".encode())
-print(client.recv(1024).decode())
